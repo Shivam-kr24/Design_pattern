@@ -1,0 +1,74 @@
+Factory Design Pattern :- when there is a supperclass and multiple subclasses , and we want to get object of superclass based on input recquirement , then we create factory class which takes the responsiblity of creating object class based input. 
+
+»» " Advantages of factory Design pattern " 
+  1. Focus on creating object for interface rather than implementation.
+  2. Loose coupling , more robust code 
+
+  The Factory Design Pattern is a creational pattern that provides an interface for creating objects in a super class but allows subclasses to alter the type of objects that will be created. It promotes loose coupling and provides a way to create objects without specifying the exact class of object that will be created.
+
+Key concepts of the Factory Design Pattern:-----
+
+1. Creator Interface:-- The Factory pattern includes an abstract class or interface that defines a method for creating objects. Subclasses of this creator interface implement the factory method to create instances of specific classes.
+
+2. Concrete Creators:- Concrete subclasses of the creator interface implement the factory method to produce instances of a specific class.
+
+3. Product Interface:- The factory method typically returns objects that implement a common interface (or extend a common base class). This ensures that the client code doesn't depend on concrete implementations but on abstractions.
+
+4. Client Code:-- Client code uses the creator interface to create objects. It's decoupled from the specific implementations of the objects it creates.
+
+ example of the Factory Design Pattern in Python:----
+
+
+from abc import ABC, abstractmethod
+
+# Product Interface
+class Animal(ABC):
+    @abstractmethod
+    def speak(self):
+        pass
+
+# Concrete Products
+class Dog(Animal):
+    def speak(self):
+        return "Woof!"
+
+class Cat(Animal):
+    def speak(self):
+        return "Meow!"
+
+# Creator Interface
+class AnimalFactory(ABC):
+    @abstractmethod
+    def create_animal(self):
+        pass
+
+# Concrete Creators
+class DogFactory(AnimalFactory):
+    def create_animal(self):
+        return Dog()
+
+class CatFactory(AnimalFactory):
+    def create_animal(self):
+        return Cat()
+
+# Client Code
+def make_animal_sound(factory):
+    animal = factory.create_animal()
+    return animal.speak()
+
+# Usage
+dog_factory = DogFactory()
+cat_factory = CatFactory()
+
+print(make_animal_sound(dog_factory))  # Outputs: Woof!
+print(make_animal_sound(cat_factory))  # Outputs: Meow!
+```
+
+In this example:-----
+
+- 'Animal' is the product interface.
+- 'Dog' and 'Cat' are concrete product classes.
+- 'AnimalFactory' is the creator interface.
+- 'DogFactory' and 'CatFactory' are concrete creator classes.
+- The client code 'make_animal_sound' creates instances through the factory and calls the 'speak' method without needing to know the concrete implementations.
+

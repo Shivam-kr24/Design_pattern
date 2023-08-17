@@ -1,0 +1,31 @@
+Design Pattern :-  A Design pattern in software development is a reusable solution to a commonly occuring problem. it provides template or set of guidelines for solving specific types of problem in consistent and efficient way.
+   → it helps to create a organised, modular and easier to understand , maintain and extended that developed software.
+   → the role of Design Pattern in software Development................
+          
+          » Commomn Solution.
+          » Code Reusebality.
+          » Modularity
+          » Flexibility and Extensibility
+          » Consistecy
+          » Documentation
+          » Best parctices
+          » problem solving
+  » design patterns are well proved solution of commonly occuring problems in software Design.
+
+          » In software development we face so many common probelems and every developer understand and try to solve in it's own way,           
+            therefore design patten is way to solve that common problem in standard way , is known as Aproaches.  
+          
+          » Aproaches for solving genral or common problems which comes during software development or after development .
+              
+           Categorization of Design Pattern.........
+             Creational Design Pattern :-- factory patttern , builder pattern , singleton Pattern etc.
+             structural Design Pattern :-- proxy pattern , Adapter Pattern.
+              Behavioral Design Pattern :-- observer Pattern , State pattern , iterator Pattern etc.
+
+»»» """ Important Points """ 
+    " Christopher Alexender was the first person who invented all the above Design Pattern in 1977."
+    " But Later the gang of four - Design Pattern , elements of reusable object-oriented software book was written by a group of four person named as Erich Gamma , Richard Helm , Ralph Johnson and  John Vlissides in 1995.
+
+
+
+    

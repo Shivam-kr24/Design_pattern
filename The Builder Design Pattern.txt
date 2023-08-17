@@ -1,0 +1,90 @@
+The Builder Design Pattern:---------
+                                The Builder Design Pattern is a creational pattern that separates the construction of a complex object     
+                                from its representation, allowing the same construction process to create different representations. It's   
+                                particularly useful when dealing with objects that have multiple components or configurations and provides     
+                                a way to construct these objects step by step.
+
+
+===== while creating object when object contain may attributes there are many problem exist.
+      1. We have to pass many arguments to create objecs.
+      2. some parameters might be optional.
+      3. factory class takes all responsibility for creating object. if the object is heavy then all complexity is the part of factory         
+         class.     
+so, in builder pattern we create object step by step and finallly return final object with desired values of attributes.
+
+
+   ""  Key concepts of the Builder Design Pattern:   ""
+
+Product: This is the complex object that is being built. It often consists of multiple components or parts.
+
+Builder: The builder interface defines the steps needed to create a product. It declares methods for constructing each part of the product.
+
+Concrete Builder: Concrete builder classes implement the builder interface and provide specific implementations for constructing the parts of the product.
+
+Director: The director class is responsible for managing the construction process. It uses a builder to create a product with a specific configuration.
+
+
+
+
+
+"""' example of the Builder Design Pattern in Python:----
+
+from abc import ABC, abstractmethod
+
+# Product
+class Meal:
+    def __init__(self):
+        self.items = []
+
+    def add_item(self, item):
+        self.items.append(item)
+
+    def show_items(self):
+        for item in self.items:
+            print(item)
+
+# Builder Interface
+class MealBuilder(ABC):
+    @abstractmethod
+    def build_burger(self):
+        pass
+
+    @abstractmethod
+    def build_drink(self):
+        pass
+
+# Concrete Builders
+class VegMealBuilder(MealBuilder):
+    def __init__(self):
+        self.meal = Meal()
+
+    def build_burger(self):
+        self.meal.add_item("Veg Burger")
+
+    def build_drink(self):
+        self.meal.add_item("Coke")
+
+    def get_meal(self):
+        return self.meal
+
+# Director
+class Waiter:
+    def construct(self, builder):
+        builder.build_burger()
+        builder.build_drink()
+
+# Usage
+veg_builder = VegMealBuilder()
+waiter = Waiter()
+waiter.construct(veg_builder)
+meal = veg_builder.get_meal()
+meal.show_items()
+
+
+In this example we used :--
+
+- 'Meal' is the product.
+- 'MealBuilder' is the builder interface with methods to build a burger and a drink.
+- 'VegMealBuilder' is a concrete builder that implements the builder interface.
+- 'Waiter' is the director that uses the builder to construct a meal.
+

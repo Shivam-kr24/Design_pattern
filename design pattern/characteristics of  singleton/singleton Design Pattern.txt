@@ -1,0 +1,134 @@
+singleton Design Pattern
+The Singleton design pattern is a creational design pattern that restricts the instantiation of a class to a single object and provides global access to that instance throughout the application. This pattern ensures that only one instance of a class is created and provides a global point of access to it.
+3 ways to break singleton pattern
+
+Singleton Object
+Singleton object are the object which are instantiated only once for project (jvm). If we try to get the object then we get same object again and again.
+
+lets create object using singleton pattern using java
+Lazy way of creating singleton object
+
+class Example{
+
+
+private static Example ob;
+
+public static Example getExample(){
+    if(ob==null){
+        ob=new Example();
+    }
+    return ob;
+}
+
+
+}
+calling the singleton object
+class Main
+{
+    public static void main(String args[]){
+        Example ob=Example.getExample()
+        //using the object
+
+    }
+    }
+}
+Eager way of creating Singleton object
+
+class Example{
+
+
+private static Example ob=new Example();
+
+public static Example getExample(){
+      return ob;
+}
+
+
+}
+Accessing object
+
+class Main
+{
+    public static void main(String args[]){
+        Example ob=Example.getExample()
+        //using the object
+
+    }
+    }
+}
+note: for multithreaded environment we use syncronized block for creating singleton object.
+
+class Example{
+
+
+private static Example ob;
+
+public static Example getExample(){
+    if(ob==null){
+      syncronized(Example.class){
+        if(ob==null)
+        {
+              ob=new Example();
+        }
+      }
+    }
+    return ob;
+}
+
+
+}
+
+Breaking Singleton Design Pattern
+There are three ways to break singleton design pattern . Lets talk about it. I am also going to tell you about the solution of these problems.
+1. Using Reflection API
+With the help of relfection api we can call private constructor  and create multiple object by calling private constructor.
+
+lets see how we can call private constructor
+Constructor<Example> constructor=Example.class.getDeclaredConstructor()
+
+//changing the accessibility to true
+constructor.setAccessible(true)
+
+Example example=constructor.newInstance();
+solution
+we can do the soultion in two ways.
+using ENUM
+public enum Example{
+    INSTANCE
+}
+check the object in private constructor if the object exists then throw exception to terminate the execution.
+private Exmaple(){
+
+    if(ob!=null)
+    {
+        throw new RuntimeExcepiton("you are trying to break singleton pattern")
+    }
+}
+2. Using Deserialization
+when we serialize and deserialize the singleton object then singleton pattern automatically got destroyed and provide us different object.
+
+ObjectOutputStream oos = new ObjectOutputStream(new
+        FileOutputStream("abc.ob"));
+        oos.writeObject(ob);
+
+        System.out.println("serialization done..");
+
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream("abc.ob"));
+        Example s2 = (Example) ois.readObject();
+        System.out.println(s2.hashCode());
+solution:
+just implement readResolve() method
+
+ public Object readResolve() {
+        return ob;
+    }
+3. Using cloning
+when we clone then also we get different object.
+
+solution
+just override clone method and return the same instance.
+
+ @Override
+    public Object clone() throws CloneNotSupportedException {
+        return samosa;
+    }

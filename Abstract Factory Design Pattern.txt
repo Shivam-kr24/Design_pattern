@@ -1,0 +1,82 @@
+ Abstract Factory Design Pattern :----------
+The Abstract Factory Design Pattern is a creational pattern that provides an interface for creating families of related or dependent objects without specifying their concrete classes. It's an extension of the Factory Design Pattern and is particularly useful when you need to create multiple objects that are part of a larger system or have variations.
+
+Key concepts of the Abstract Factory Design Pattern:
+
+1. **Abstract Factory:** This is an interface that declares a set of methods for creating abstract product objects. It defines methods for creating related objects as a family.
+
+2. Concrete Factory:--- Concrete subclasses of the abstract factory implement the methods declared in the abstract factory interface. Each concrete factory is responsible for creating a specific family of related objects.
+
+3. Abstract Product:-- This is an interface or abstract class that declares the methods that concrete product classes must implement.
+
+4. Concrete Product:-- Concrete product classes implement the abstract product interface. They are created by concrete factories.
+
+  example of the Abstract Factory Design Pattern in Python:---
+
+from abc import ABC, abstractmethod
+
+# Abstract Product Interfaces
+class Shape(ABC):
+    @abstractmethod
+    def draw(self):
+        pass
+
+class Color(ABC):
+    @abstractmethod
+    def fill(self):
+        pass
+
+# Concrete Product Classes
+class Circle(Shape):
+    def draw(self):
+        return "Draw a Circle"
+
+class Square(Shape):
+    def draw(self):
+        return "Draw a Square"
+
+class Red(Color):
+    def fill(self):
+        return "Fill with Red color"
+
+class Blue(Color):
+    def fill(self):
+        return "Fill with Blue color"
+
+# Abstract Factory Interface
+class AbstractFactory(ABC):
+    @abstractmethod
+    def create_shape(self):
+        pass
+
+    @abstractmethod
+    def create_color(self):
+        pass
+
+# Concrete Factory Classes
+class ShapeColorFactory(AbstractFactory):
+    def create_shape(self):
+        return Circle()
+
+    def create_color(self):
+        return Red()
+
+# Client Code
+def create_and_fill(factory):
+    shape = factory.create_shape()
+    color = factory.create_color()
+    return f"{shape.draw()} and {color.fill()}"
+
+# Usage
+factory = ShapeColorFactory()
+result = create_and_fill(factory)
+print(result)  # Outputs: Draw a Circle and Fill with Red color
+```
+
+In this example:
+
+- `Shape` and `Color` are abstract product interfaces.
+- `Circle`, `Square`, `Red`, and `Blue` are concrete product classes.
+- `AbstractFactory` is the abstract factory interface that declares methods for creating abstract products.
+- `ShapeColorFactory` is a concrete factory that implements the abstract factory interface and creates related products.
+

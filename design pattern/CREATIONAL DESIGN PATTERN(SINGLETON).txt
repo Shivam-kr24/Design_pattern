@@ -1,0 +1,35 @@
+CREATIONAL DESIGN PATTERN
+
+Singleton Design Pattern : --   The Singleton design pattern is a creational design pattern that ensures a class has only one instance and provides a global point of access to that instance. This pattern is useful when you want to control the instantiation of a class to a single object, ensuring that multiple instances are not created.
+
+Key characteristics of the Singleton pattern:
+
+1. Single Instance:- only one instances of that class will be created and used throughout the application.
+
+2. Global Access:-- Acess globally from any part of the application  providing centralized point for managing it's behaviour  
+
+3. Lazy Initialization:-- The Singleton instance is created when it's first requested, rather than being created during application startup. This approach helps save resources until the instance is actually needed.
+
+4. Thread Safety:-- In multi-threaded environments, Singleton implementations need to ensure that the creation of the instance is thread-safe, preventing the possibility of multiple instances being created concurrently.
+
+
+
+
+class Singleton:
+    _instance = None
+
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+
+# Usage
+singleton1 = Singleton()
+singleton2 = Singleton()
+
+print(singleton1 is singleton2)  # Outputs: True
+
+
+In this example, the '__new__' method of the class is overridden to control the creation of instances. The first time an instance is requested, it's created and stored in the `_instance` attribute. For subsequent requests, the existing instance is returned.
+
+The Singleton pattern is commonly used for managing resources that are expensive to create or for maintaining a global state in applications. 
