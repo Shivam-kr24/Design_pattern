@@ -1,0 +1,38 @@
+Prototype Design pattern
+  → The concept is to copy an existing object rather than creating a new instances from scratch. becouse creating new object may be costly 
+  → The approaches saves costly resources and time , especially when object creation is heavy process.
+
+shallow copy 
+ → When we do a copy of some entity to create two or more than two entities such that changes in one entity are reflected in the other  
+   entities as well, then we can say we have done a shallow copy. In shallow copy, new memory allocation never happens for the other 
+   entities, and the only reference is copied to the other entities. The following example demonstrates the same.
+ 
+Deep copy
+ →When we do a copy of some entity to create two or more than two entities such that changes in one entity are not reflected in the other    
+ entities, then we can say we have done a deep copy. In the deep copy, a new memory allocation happens for the other entities, and reference 
+ is not copied to the other entities. Each entity has its own independent reference. The following example demonstrates the same.
+
+Observer design Pattern
+ → It is behavioural Design pattern.
+ → In this when subject changes the state all its dependent objects notified the changes.
+ → One to many relation.
+  
+
+Iterator Design pattern
+  → The itrator design pattern provides a way to access the elements of an object withiut exposing it underlying implementation.
+  → We use it when we work with array and collection framework . it is always used in multiple stored , list etc.
+
+Adaptive design Pattern 
+  →  An Adapter Pattern says that just "converts the interface of a class into another interface that a client wants".
+  →  In other words, to provide the interface according to client requirement while using the services of a class with a different 
+       interface.
+    →  The Adapter Pattern is also known as Wrapper.
+→  Advantage of Adapter Pattern
+     →  It allows two or more previously incompatible objects to interact.
+     → It allows reusability of existing functionality.
+         Usage of Adapter pattern:
+
+→ It is used:
+        → When an object needs to utilize an existing class with an incompatible interface.
+        → When you want to create a reusable class that cooperates with classes which don't have compatible interfaces.
+        → When you want to create a reusable class that cooperates with classes which don't have compatible interfaces.
