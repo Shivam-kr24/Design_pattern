@@ -1,0 +1,11 @@
+Threads in python are an entity within a process that can be scheduled for execution. In simpler words, a thread is a computation process that is to be performed by a computer. It is a sequence of such instructions within a program that can be executed independently of other codes.
+
+Points to remember while joining threads using join() in Python:
+
+A run time error occurs when join() method is invoked on the same thread as calling join() on the same thread results in a deadlock condition.
+If the join() method is called on a thread which is yet to be started , then a run time error is raised.
+If the join() has the timeout argument then it should be a floating point number representing the time for the operation of thread in seconds.
+If the join() method has no argument, the until the thread terminates the operation is blocked.
+As the value returned by join() is always None, we should always use isAlive() immediately after join() to check whether the thread is still alive or not.
+
+
