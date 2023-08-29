@@ -1,4 +1,4 @@
-1. what is thread ?
+Q.. what is thread ?
 --individual and separate unit of execution that is part of a process.
 --multiple threads can work together to accomplish a common goal.
 
